@@ -37,6 +37,12 @@ class Contact
      */
     private $body;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Subject::class, inversedBy="contact")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $subject;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Contact
     public function setBody(?string $body): self
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    public function getSubject(): ?Subject
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?Subject $subject): self
+    {
+        $this->subject = $subject;
 
         return $this;
     }
